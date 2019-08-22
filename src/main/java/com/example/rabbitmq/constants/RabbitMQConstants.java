@@ -20,7 +20,7 @@ public class RabbitMQConstants {
     public static final String MY_FIRST_QUEUE = "Direct-Queue";
 
     /**
-     * Direct模式-对应调用处使用
+     * Topic模式-对应调用处使用
      */
     public static final String TOPIC_QUEUE_1 = "Topic_Queue_One";
 
