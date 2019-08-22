@@ -43,4 +43,13 @@ public class RabbitMQConsumeService {
     public void receiveFanout2(List list) {
         System.out.println("Fanout模式下第二个队列处理"+list);
     }
+
+    /**
+     * Header模式
+     */
+    @RabbitListener(queues = RabbitMQConstants.HEADERS_QUEUE)
+    public void receiveHeaders(byte[] msg) {
+        System.out.println("Header模式下第一个队列处理"+msg);
+    }
+
 }

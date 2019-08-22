@@ -5,6 +5,9 @@ import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 队列注入Spring IOC
  */
@@ -70,6 +73,27 @@ public class QueueConfiguration {
     @Bean
     public Binding fanoutBindingTwo() {
         return BindingBuilder.bind(fanoutQueueTwo()).to(fanoutExchange());
+    }
+
+    /**
+     * Header模式：键值对模式匹配
+     */
+    @Bean
+    public Queue headerQueue() {
+        return new Queue(RabbitMQConstants.HEADERS_QUEUE, true);
+    }
+
+    @Bean
+    public HeadersExchange headersExchage(){
+        return new HeadersExchange(RabbitMQConstants.HEADERS_EXCHANGE);
+    }
+
+    @Bean
+    public Binding headerBinding() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("h1", "v1");
+        map.put("h2", "v2");
+        return BindingBuilder.bind(headerQueue()).to(headersExchage()).whereAll(map).match();
     }
 
 }

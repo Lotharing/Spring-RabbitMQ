@@ -17,7 +17,7 @@ public class RabbitMQConstants {
     /**
      * Direct模式-对应调用处使用
      */
-    public static final String MY_FIRST_QUEUE = "My-First-Queue";
+    public static final String MY_FIRST_QUEUE = "Direct-Queue";
 
     /**
      * Direct模式-对应调用处使用
@@ -41,4 +41,10 @@ public class RabbitMQConstants {
 
     public static final String FANOUT_EXCHANGE = "Fanout_Exchange";
 
+    /**
+     * Header模式：键值对模式匹配
+     */
+    public static final String HEADERS_QUEUE = "Headers_Queue";
+
+    public static final String HEADERS_EXCHANGE = "Headers_Exchange";
 }
