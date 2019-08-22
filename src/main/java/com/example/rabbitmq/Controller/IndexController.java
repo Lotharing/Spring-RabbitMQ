@@ -43,4 +43,15 @@ public class IndexController {
         modelMap.put("msg","控制台打印消费信息");
         return modelMap;
     }
+
+    @ResponseBody
+    @RequestMapping("/firstFanoutQueue")
+    public Map sendFanoutQueue(){
+        Map<String,Object> modelMap = new HashMap<String,Object>();
+        List<String> list  = new ArrayList<String>();
+        list.add("Current QUERY Fanout Model");
+        amqpTemplate.convertAndSend(RabbitMQConstants.FANOUT_EXCHANGE, "", list);
+        modelMap.put("msg","控制台打印消费信息");
+        return modelMap;
+    }
 }

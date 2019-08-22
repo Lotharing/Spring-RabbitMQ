@@ -31,4 +31,16 @@ public class RabbitMQConsumeService {
         System.out.println("Topic模式下的第二个（通配符）队列处理"+list);
     }
 
+    /**
+     * Fanout模式-广播
+     */
+    @RabbitListener(queues = RabbitMQConstants.FANOUT_QUEUE_One)
+    public void receiveFanout1(List list) {
+        System.out.println("Fanout模式下第一个队列处理"+list);
+    }
+
+    @RabbitListener(queues = RabbitMQConstants.FANOUT_QUEUE_Two)
+    public void receiveFanout2(List list) {
+        System.out.println("Fanout模式下第二个队列处理"+list);
+    }
 }

@@ -32,7 +32,13 @@ public class RabbitMQConstants {
     // 可以使用通配符Topic.*
     public static final String ROUTINE_KEY_2 = "Topic.Key2";
 
+    /**
+     *Fanout模式：广播-对应调用处使用
+     */
+    public static final String FANOUT_QUEUE_One = "Fanout_Queue_One";
 
+    public static final String FANOUT_QUEUE_Two = "Fanout_Queue_Two";
 
+    public static final String FANOUT_EXCHANGE = "Fanout_Exchange";
 
 }

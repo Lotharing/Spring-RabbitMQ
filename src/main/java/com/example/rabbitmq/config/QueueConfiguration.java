@@ -1,11 +1,7 @@
 package com.example.rabbitmq.config;
 
 import com.example.rabbitmq.constants.RabbitMQConstants;
-import com.rabbitmq.client.AMQP;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -51,5 +47,29 @@ public class QueueConfiguration {
         return BindingBuilder.bind(topicQueueTwo()).to(topicExchange()).with(RabbitMQConstants.ROUTINE_KEY_2);
     }
 
+    /**
+     * Fanout模式-广播
+     */
+
+    @Bean
+    public Queue fanoutQueueOne() {
+        return new Queue(RabbitMQConstants.FANOUT_QUEUE_One, true);
+    }
+    @Bean
+    public Queue fanoutQueueTwo() {
+        return new Queue(RabbitMQConstants.FANOUT_QUEUE_Two, true);
+    }
+    @Bean
+    public FanoutExchange fanoutExchange() {
+        return new FanoutExchange(RabbitMQConstants.FANOUT_EXCHANGE);
+    }
+    @Bean
+    public Binding fanoutBindingOne() {
+        return BindingBuilder.bind(fanoutQueueOne()).to(fanoutExchange());
+    }
+    @Bean
+    public Binding fanoutBindingTwo() {
+        return BindingBuilder.bind(fanoutQueueTwo()).to(fanoutExchange());
+    }
 
 }
