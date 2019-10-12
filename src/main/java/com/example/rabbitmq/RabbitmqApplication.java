@@ -10,5 +10,4 @@ public class RabbitmqApplication {
         SpringApplication.run(RabbitmqApplication.class, args);
     }
 
-
 }
